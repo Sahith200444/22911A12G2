@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>All Users</title>
+</head>
+<body>
+  <h1>All Users</h1>
+  {% if error %}
+    <p style="color:red;">Error: {{ error }}</p>
+  {% else %}
+    {% if users %}
+      <table border="1" cellpadding="5">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <!-- Add other fields (e.g., Email) if available -->
+        </tr>
+        {% for user in users %}
+          <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    {% else %}
+      <p>No users found.</p>
+    {% endif %}
+  {% endif %}
+  <p><a href="{{ url_for('index') }}">Back to Home</a></p>
+</body>
+</html>
